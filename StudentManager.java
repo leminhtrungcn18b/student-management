@@ -69,4 +69,32 @@ public class StudentManager {
     public void show() {
         studentList.forEach(e -> System.out.println(e.toString()));
     }
+
+    public void sortStudentByGpa() {
+        for (int i = 0; i < studentList.size(); i++) {
+            for (int j = i + 1; j < studentList.size(); j++) {
+                if (studentList.get(i).getGpa() < studentList.get(j).getGpa()) {
+                    Student maxTemp;
+                    maxTemp = studentList.get(i);
+                    studentList.set(i, studentList.get(j));
+                    studentList.set(j, maxTemp);
+                }
+            }
+        }
+        studentIO.write(studentList);
+    }
+
+    public void sortStudentByName() {
+        for (int i = 0; i < studentList.size(); i++) {
+            for (int j = i + 1; j < studentList.size(); j++) {
+                if (studentList.get(i).getName().compareTo(studentList.get(j).getName()) > 0) {
+                    Student temp;
+                    temp = studentList.get(i);
+                    studentList.set(i, studentList.get(j));
+                    studentList.set(j, temp);
+                }
+            }
+        }
+        studentIO.write(studentList);
+    }
 }
