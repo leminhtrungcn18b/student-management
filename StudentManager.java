@@ -97,4 +97,14 @@ public class StudentManager {
         }
         studentIO.write(studentList);
     }
+
+    public void findStudentByName() {
+        String name = si.inputName().toLowerCase();
+
+        for (Student s : studentList) {
+            if (s.getName().toLowerCase().contains(name)) {
+                System.out.println(s);
+            }
+        }
+    }
 }

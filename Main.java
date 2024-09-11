@@ -27,6 +27,9 @@ public class Main {
                 case "6":
                     s.sortStudentByName();
                     break;
+                case "7":
+                    s.findStudentByName();
+                    break;
                 case "0":
                     System.out.println("Exited.");
                     System.exit(0);
@@ -44,6 +47,7 @@ public class Main {
         System.out.println("4. Delete");
         System.out.println("5. Sort student by GPA");
         System.out.println("6. Sort studetn by name");
+        System.out.println("7. Find student");
         System.out.println("0. Exit");
         System.out.print("Choose function: ");
     }
