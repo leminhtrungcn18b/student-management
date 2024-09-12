@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentInput {
@@ -84,5 +85,21 @@ public class StudentInput {
 
     public int inputChoose() {
         return Integer.parseInt(sc.nextLine());
+    }
+
+    public int createId(ArrayList<Student> studentList) {
+        int id = 1;
+
+        if (studentList.size() > 0) {
+            id = studentList.size() + 1;
+        }
+
+        for (Student e : studentList) {
+            if (e.getId() == id) {
+                id++;
+            }
+        }
+
+        return id;
     }
 }

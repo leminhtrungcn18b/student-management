@@ -12,7 +12,9 @@ public class StudentManager {
     }
 
     public void add() {
-        int id = si.inputId();
+        int id = si.createId(studentList);
+
+        System.out.println("Input ID: " + id);
 
         String name = si.inputName();
 
@@ -82,6 +84,7 @@ public class StudentManager {
             }
         }
         studentIO.write(studentList);
+        System.out.println("Sorted successful");
     }
 
     public void sortStudentByName() {
@@ -96,6 +99,7 @@ public class StudentManager {
             }
         }
         studentIO.write(studentList);
+        System.out.println("Sorted successful");
     }
 
     public void findStudentByName() {
