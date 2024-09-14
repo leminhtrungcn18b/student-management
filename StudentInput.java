@@ -1,8 +1,11 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentInput {
     public Scanner sc = new Scanner(System.in);
+
+    DecimalFormat df = new DecimalFormat("#.##");
 
     public String inputName() {
         System.out.print("Input name: ");
@@ -47,7 +50,9 @@ public class StudentInput {
         while (true) {
             try {
                 String gpaTemp = sc.nextLine().trim();
-                float gpa = Float.parseFloat(gpaTemp);
+                float gpaTemp2 = Float.parseFloat(gpaTemp);
+                float gpa = Float.parseFloat(df.format(gpaTemp2));
+
                 if (gpa < 0 || gpa > 10) {
                     throw new NumberFormatException();
                 }
@@ -83,23 +88,20 @@ public class StudentInput {
         }
     }
 
-    public int inputChoose() {
-        return Integer.parseInt(sc.nextLine());
-    }
-
     public int createId(ArrayList<Student> studentList) {
-        int id = 1;
-
-        if (studentList.size() > 0) {
-            id = studentList.size() + 1;
-        }
-
-        for (Student e : studentList) {
-            if (e.getId() == id) {
-                id++;
+        int id = 0;
+        
+        if (!studentList.isEmpty()) {
+            int temp = studentList.get(0).getId();
+            for (Student s : studentList) {
+                if (s.getId() > temp) {
+                    temp = s.getId();
+                }
             }
+            id = temp + 1;
+        } else {
+            id = 1;
         }
-
         return id;
     }
 }

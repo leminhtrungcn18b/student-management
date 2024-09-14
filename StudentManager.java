@@ -32,6 +32,7 @@ public class StudentManager {
     }
 
     public void edit() {
+        int count = 0;
         System.out.println("Edit student: ");
         int id = si.inputId();
         for (int i = 0; i < studentList.size(); i++) {
@@ -40,7 +41,11 @@ public class StudentManager {
                 studentList.get(i).setGpa(gpa);
 
                 studentIO.write(studentList);
+                count++;
             }
+        }
+        if (count == 0) {
+            System.out.println("No student with ID = " + id);
         }
     }
 
@@ -109,6 +114,24 @@ public class StudentManager {
             if (s.getName().toLowerCase().contains(name)) {
                 System.out.println(s);
             }
+        }
+    }
+
+    public void findStudentByGpa() {
+        int count = 0;
+        float gpa = si.inputGpa();
+
+        String strGpa = String.valueOf(gpa);
+
+        for (Student s : studentList) {
+            String sGpa = String.valueOf(s.getGpa());
+            if (sGpa.contains(strGpa)) {
+                System.out.println(s);
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.println("No student gpa = " + gpa);
         }
     }
 }
